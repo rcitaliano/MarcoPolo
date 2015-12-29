@@ -48,18 +48,17 @@
 */
 
 //    !! It is not a good idea to modify this file when a game is running !!
-class StateEnumerator
-{
-	const gameSetup = 1;
-    const firstRoundBegin = 2;
-    const roundBegin = 3;
-	const roundEnd = 4;
-	const playerTurn = 5;
-	const mandatoryState = 6;
-	const bonusState = 7;
-	const nextPlayer = 8;
-	const gameEnd = 99;
-};
+
+$gameSetup = 1;
+ $firstRoundBegin = 2;
+ $roundBegin = 3;
+$roundEnd = 4;
+$playerTurn = 5;
+$mandatoryState = 6;
+$bonusState = 7;
+$nextPlayer = 8;
+$gameEnd = 99;
+
 $machinestates = array(
 
     // The initial state. Please do not modify.
@@ -73,69 +72,69 @@ $machinestates = array(
     
     // Note: ID=2 => your first state
 	
-    StateEnumerator::firstRoundBegin => array(
+    $firstRoundBegin => array(
     		"name" => "firstRoundBegin",
     		"description" => clienttranslate('This is the first Round, every player must choose a Character and Destination Cards'),
     		"descriptionmyturn" => clienttranslate('This is the first Round, ${you} must choose your Character and your Destination Cards'),
-    		"type" => "multipleactiveplayer",
+    		"type" => "activeplayer",
     		"possibleactions" => array( "chooseCharacterAndDestinations"),
-    		"transitions" => array( "playerTurn" => StateEnumerator::playerTurn)
+    		"transitions" => array( "playerTurn" => $playerTurn)
     ),
-    StateEnumerator::roundBegin => array(
+    $roundBegin => array(
     		"name" => "roundBegin",
     		"description" => clienttranslate('${actplayer} must make a mandatory action or bonus action'),
     		"descriptionmyturn" => clienttranslate('${you} must make a mandatory action or bonus action'),
-    		"type" => "multipleactiveplayer",
+    		"type" => "activeplayer",
 			"action" => "stRoundBegin",
     		"possibleactions" => array( "mandatory", "bonus", "pass" ),
-    		"transitions" => array( "playerTurn" => StateEnumerator::playerTurn)
+    		"transitions" => array( "playerTurn" => $playerTurn)
     ),
-    StateEnumerator::playerTurn => array(
+    $playerTurn => array(
     		"name" => "playerTurn",
     		"description" => clienttranslate('${actplayer} must make a mandatory action or bonus action'),
     		"descriptionmyturn" => clienttranslate('${you} must make a mandatory action or bonus action'),
     		"type" => "activeplayer",
     		"possibleactions" => array( "mandatory", "bonus", "pass" ),
-    		"transitions" => array( "mandatoryState" => StateEnumerator::mandatoryState, 
-									"bonusState" => StateEnumerator::bonusState, 
-									"nextPlayer" => StateEnumerator::nextPlayer)
+    		"transitions" => array( "mandatoryState" => $mandatoryState, 
+									"bonusState" => $bonusState, 
+									"nextPlayer" => $nextPlayer)
     ),
-    StateEnumerator::mandatoryState => array(
+    $mandatoryState => array(
     		"name" => "mandatoryState",
     		"description" => clienttranslate('${actplayer} must make a mandatory action'),
     		"descriptionmyturn" => clienttranslate('${you} must make a mandatory action'),
     		"type" => "activeplayer",
     		"possibleactions" => array( "take5Gold", "goToTheBazaar", "seekTheKhansFavor", "TakeAContract", "Travel", "cityCard" ),
-    		"transitions" => array( "playerTurn" => StateEnumerator::playerTurn)
+    		"transitions" => array( "playerTurn" => $playerTurn)
     ),
-    StateEnumerator::bonusState => array(
+    $bonusState => array(
     		"name" => "bonusState",
     		"description" => clienttranslate('${actplayer} must make a bonus action'),
     		"descriptionmyturn" => clienttranslate('${you} must make a bonus action'),
     		"type" => "activeplayer",
     		"possibleactions" => array( "pass", "completeContract", "take3Coins", "rerollDie", "adjustDieResultByOne", "take1BlackDie" ),
-    		"transitions" => array( "playerTurn" => StateEnumerator::playerTurn,
-									"nextPlayer" => StateEnumerator::nextPlayer)
+    		"transitions" => array( "playerTurn" => $playerTurn,
+									"nextPlayer" => $nextPlayer)
     ),
-	StateEnumerator::nextPlayer => array (
+	$nextPlayer => array (
     		"name" => "nextPlayer",
     		"description" => clienttranslate('${actplayer} ended his/her turn'),
     		"descriptionmyturn" => clienttranslate('${you} ended your turn'),
     		"type" => "game",
     		"action" => "stNextPlayer",
 			"updateGameProgression" => true,   
-    		"transitions" => array( "playerTurn" => StateEnumerator::playerTurn,
-									"nextPlayer" => StateEnumerator::nextPlayer, 
-									"roundBegin" => StateEnumerator::roundEnd)
+    		"transitions" => array( "playerTurn" => $playerTurn,
+									"nextPlayer" => $nextPlayer, 
+									"roundBegin" => $roundEnd)
 	),
-	StateEnumerator::roundEnd => array (
+	$roundEnd => array (
     		"name" => "nextPlayer",
     		"description" => clienttranslate('Round Ended'),
     		"descriptionmyturn" => clienttranslate('Round Ended'),
     		"type" => "game",
     		"action" => "stRoundEnd",
 			"updateGameProgression" => true,   
-    		"transitions" => array( "roundBegin" => StateEnumerator::roundBegin, "gameEnd" => StateEnumerator::gameEnd)
+    		"transitions" => array( "roundBegin" => $roundBegin, "gameEnd" => $gameEnd)
 	),
 	
     
