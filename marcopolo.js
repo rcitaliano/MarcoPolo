@@ -56,6 +56,20 @@ function (dojo, declare) {
                 // TODO: Setting up players boards if needed
                 var player_board_div = $('player_board_'+player_id);
                 dojo.place( this.format_block('jstpl_player_board', player ), player_board_div );
+				dojo.place( this.format_block('jstpl_player_board_resources', {id:player_id} ), player_board_div );
+				
+				var player_resources_div = $('resources_p'+player_id);
+				for(var resource_id in gamedatas.resource_types)
+				{
+					dojo.place( this.format_block('jstpl_player_board_resource', 
+													{
+														id:player_id,
+														resource_id:resource_id,
+														resourceName:gamedatas.resource_types[resource_id]['name']
+													} 
+													), 
+													player_resources_div );
+				}
             }
             
             // TODO: Set up your game interface here, according to "gamedatas"

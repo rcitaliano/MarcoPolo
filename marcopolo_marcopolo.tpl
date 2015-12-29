@@ -63,8 +63,12 @@ var jstpl_player_board = '\<div class="cp_board">\
     <div id="trading_posts_p${id}" >trading_posts_p${id}</div>\
 	<div id="dices_p${id}" >dices_p${id}</div>\
 	<div id="active_contracts_p${id}" >active_contracts_p${id}</div>\
-	<div id="resources_p${id}" >resources_p${id}</div>\
 </div>';
+
+var jstpl_player_board_resources =  '\<div id="resources_p${id}" >resources:\
+									</div>';
+var jstpl_player_board_resource =  '\<div id="resource_p${id}_r${resource_id}" >${resourceName}\
+									</div>';									
 </script>  
 
 {OVERALL_GAME_FOOTER}
