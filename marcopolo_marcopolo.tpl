@@ -47,10 +47,6 @@
 	<h2>city card</h2>
 	</div>
 </div>
-<div>
-<h1>Player Board</h1>
-</div>
-
 
 <script type="text/javascript">
 
@@ -62,6 +58,13 @@ var jstpl_some_game_item='<div class="my_game_item" id="my_game_item_${id}"></di
 
 */
 
+var jstpl_player_board = '\<div class="cp_board">\
+	<div id="character_p${id}" >character_p${id}</div>\
+    <div id="trading_posts_p${id}" >trading_posts_p${id}</div>\
+	<div id="dices_p${id}" >dices_p${id}</div>\
+	<div id="active_contracts_p${id}" >active_contracts_p${id}</div>\
+	<div id="resources_p${id}" >resources_p${id}</div>\
+</div>';
 </script>  
 
 {OVERALL_GAME_FOOTER}
