@@ -59,13 +59,16 @@ function (dojo, declare) {
 				dojo.place( this.format_block('jstpl_player_board_resources', {id:player_id} ), player_board_div );
 				
 				var player_resources_div = $('resources_p'+player_id);
+				var player_resources = gamedatas.player_resources[player_id];
 				for(var resource_id in gamedatas.resource_types)
 				{
+					var resource = gamedatas.resource_types[resource_id];
 					dojo.place( this.format_block('jstpl_player_board_resource', 
 													{
 														id:player_id,
 														resource_id:resource_id,
-														resourceName:gamedatas.resource_types[resource_id]['name']
+														resourceName:resource['name'],
+														resourceAmount:player_resources[resource_id]
 													} 
 													), 
 													player_resources_div );

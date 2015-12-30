@@ -67,7 +67,7 @@ var jstpl_player_board = '\<div class="cp_board">\
 
 var jstpl_player_board_resources =  '\<div id="resources_p${id}" >resources:\
 									</div>';
-var jstpl_player_board_resource =  '\<div id="resource_p${id}_r${resource_id}" >${resourceName}\
+var jstpl_player_board_resource =  '\<div id="resource_p${id}_r${resource_id}" >${resourceName} ${resourceAmount}\
 									</div>';									
 </script>  
 

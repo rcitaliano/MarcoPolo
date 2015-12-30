@@ -31,11 +31,33 @@ $this->card_types = array(
 );
 
 */
+
+$this->player_resources = array();
+$this->player_contracts = array();
 $this->resourceTypes = array(
 	0 => array("name"=>"camels"),
 	1 => array("name"=>"pepper"),
 	2 => array("name"=>"silk"),
 	3 => array("name"=>"gold"),
+	4 => array("name"=>"coin"),
+	5 => array("name"=>"point")
+);
+$this->startingContracts = array(
+	0 => array("name"=>"0"),
+	1 => array("name"=>"1"),
+	2 => array("name"=>"2"),
+	3 => array("name"=>"3"),
+	4 => array("name"=>"4"),
+	5 => array("name"=>"5"),
+	6 => array("name"=>"6"),
+	7 => array("name"=>"7"),
+	8 => array("name"=>"8"),
+	9 => array("name"=>"9"),
+	10 => array("name"=>"10"),
+	11 => array("name"=>"11"),
+	12 => array("name"=>"12"),
+	13 => array("name"=>"13"),
+	14 => array("name"=>"14")
 );
 $this->contracts = array(
 	0 => array("name"=>"0"),

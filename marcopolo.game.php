@@ -117,7 +117,22 @@ class MarcoPolo extends Table
         $result['players'] = self::getCollectionFromDb( $sql );
   
         // TODO: Gather all information about current game situation (visible by player $current_player_id).
+		
+        foreach( $result['players'] as $player_id => $player )
+        {
+            //create player base resources
+			$this->player_resources[$player_id] = array();
+			foreach ($this->resourceTypes as $resourceID => $resourceType)
+			{
+				$this->player_resources[$player_id][$resourceID] = 0;
+			}
+			$this->player_contracts[$player_id] = array();
+			array_push($this->player_contracts[$player_id],array_shift($this->startingContracts));
+        }
+		
 		$result['resource_types'] = $this->resourceTypes;
+		$result['player_resources'] = $this->player_resources;
+		$result['player_contracts'] = $this->player_contracts;
         return $result;
     }
 
